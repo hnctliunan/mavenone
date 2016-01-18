@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/com.front.biz/com.front.biz.iml" filepath="$PROJECT_DIR$/com.front.biz/com.front.biz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.front.biz.impl/com.front.biz.impl.iml" filepath="$PROJECT_DIR$/com.front.biz.impl/com.front.biz.impl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.front.dao/com.front.dao.iml" filepath="$PROJECT_DIR$/com.front.dao/com.front.dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.front.entity/com.front.entity.iml" filepath="$PROJECT_DIR$/com.front.entity/com.front.entity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.front.web/com.front.web.iml" filepath="$PROJECT_DIR$/com.front.web/com.front.web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.one.utils/com.one.utils.iml" filepath="$PROJECT_DIR$/com.one.utils/com.one.utils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mavenone.iml" filepath="$PROJECT_DIR$/mavenone.iml" />
+    </modules>
+  </component>
+</project>

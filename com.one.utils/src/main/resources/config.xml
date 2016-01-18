@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<classPathEntry location="F:\maven\repository\mysql\mysql-connector-java\5.1.32\mysql-connector-java-5.1.32.jar" />
+	<context id="MySQL" targetRuntime="MyBatis3">
+		<plugin type="com.base.plugin.BaseEntityPlugin" />
+		<plugin type="com.base.plugin.BatchPlugin" />
+		<plugin type="com.base.plugin.MySQLPapperPlugin" />
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.1.214:3306/fjsfront" userId="p2p" password="fjs201503">
+		</jdbcConnection>
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<javaModelGenerator targetPackage="com.entity.security" targetProject="F:\gjs\mavenone\com.front.entity\src\main\java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+		<sqlMapGenerator targetPackage="com.front.dao.security" targetProject="F:\gjs\mavenone\com.front.dao\src\main\java">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+		<javaClientGenerator type="XMLMAPPER" targetPackage="com.front.dao.security" targetProject="F:\gjs\mavenone\com.front.dao\src\main\resources">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+		<table tableName="tb_security_account" />
+		
+	</context>
+</generatorConfiguration> 
