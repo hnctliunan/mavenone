@@ -34,6 +34,11 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
+            <groupId>ln</groupId>
+            <artifactId>com.one.utils</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
         </dependency>
@@ -64,6 +69,19 @@
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
+        </dependency>
+        <!-- json 的转换 -->
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
         </dependency>
     </dependencies>
     <build>

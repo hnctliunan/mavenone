@@ -6,5 +6,7 @@ import com.alibaba.fastjson.JSONObject;
  * Created by admin on 2016/1/11.
  */
 public interface ITbSecurityAccountBiz {
-    public JSONObject queryList();
+    public JSONObject queryList() throws Exception;
+
+    public JSONObject insertAccount() throws Exception;
 }

@@ -9,5 +9,5 @@ import java.util.List;
  * Created by admin on 2016/1/18.
  */
 public interface TbSecurityAccountExtMapper extends BaseDao{
-    public List<TbSecurityAccount> selectAllAccount();
+    public List<TbSecurityAccount> selectAllAccount() throws Exception;
 }

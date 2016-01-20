@@ -15,7 +15,12 @@ public class TestSecurity {
     private ITbSecurityAccountBiz iTbSecurityAccountBiz;
     @Test
     public void test1(){
-        JSONObject jsonObject = this.iTbSecurityAccountBiz.queryList();
+        JSONObject jsonObject = null;
+        try {
+            jsonObject = this.iTbSecurityAccountBiz.queryList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         System.out.println("***********************" + jsonObject);
     }
 }

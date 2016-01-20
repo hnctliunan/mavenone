@@ -1,4 +1,4 @@
-package com.base.vo;
+package com.base.result.vo;
 
 import com.alibaba.fastjson.JSONObject;
 

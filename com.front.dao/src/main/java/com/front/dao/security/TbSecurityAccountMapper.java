@@ -13,7 +13,7 @@ public interface TbSecurityAccountMapper extends BaseDao {
 
     int deleteByPrimaryKey(String dataId);
 
-    int insert(TbSecurityAccount record);
+    int insert(TbSecurityAccount record) throws Exception;
 
     int insertSelective(TbSecurityAccount record);
 
