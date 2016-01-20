@@ -13,6 +13,7 @@ import com.front.dao.security.TbSecurityCustomerMapper;
 import com.security.biz.ITbSecurityAccountBiz;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -37,6 +38,7 @@ public class TbSecurityAccountBizImpl extends BaseBizImpl implements ITbSecurity
     }
 
     @Override
+    @Transactional
     public JSONObject insertAccount() throws Exception {
         TbSecurityAccount objSecurityAccount = new TbSecurityAccount();
         objSecurityAccount.setDataId(Guid.get());
