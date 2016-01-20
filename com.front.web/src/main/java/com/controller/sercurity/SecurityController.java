@@ -36,6 +36,7 @@ public class SecurityController extends BaseController{
         String s = request.getContextPath();
         try {
             this.objSecurityAccountBiz.insertAccount();
+//            this.objSecurityAccountBiz.visterAccount();
         } catch (Exception e) {
             e.printStackTrace();
         }

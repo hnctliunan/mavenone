@@ -27,6 +27,8 @@
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.4" level="project" />
     <orderEntry type="module" module-name="com.front.biz" />
     <orderEntry type="module" module-name="com.front.dao" />
+    <orderEntry type="library" name="Maven: org.mybatis:mybatis:3.2.7" level="project" />
+    <orderEntry type="library" name="Maven: org.mybatis:mybatis-spring:1.2.1" level="project" />
     <orderEntry type="module" module-name="com.front.entity" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet:servlet-api:2.5" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet.jsp:jsp-api:2.2" level="project" />

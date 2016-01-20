@@ -9,4 +9,6 @@ public interface ITbSecurityAccountBiz {
     public JSONObject queryList() throws Exception;
 
     public JSONObject insertAccount() throws Exception;
+
+    public JSONObject visterAccount() throws Exception;
 }
