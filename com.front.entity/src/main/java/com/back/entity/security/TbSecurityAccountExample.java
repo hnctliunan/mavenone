@@ -1,7 +1,6 @@
-package com.entity.security;
+package com.back.entity.security;
 
 import com.base.papper.PageSet;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -1067,143 +1066,133 @@ public class TbSecurityAccountExample {
             return (Criteria) this;
         }
 
-        public Criteria andLoginTypeIsNull() {
-            addCriterion("login_type is null");
+        public Criteria andLoginTimeIsNull() {
+            addCriterion("login_time is null");
             return (Criteria) this;
         }
 
-        public Criteria andLoginTypeIsNotNull() {
-            addCriterion("login_type is not null");
+        public Criteria andLoginTimeIsNotNull() {
+            addCriterion("login_time is not null");
             return (Criteria) this;
         }
 
-        public Criteria andLoginTypeEqualTo(String value) {
-            addCriterion("login_type =", value, "loginType");
+        public Criteria andLoginTimeEqualTo(Date value) {
+            addCriterion("login_time =", value, "loginTime");
             return (Criteria) this;
         }
 
-        public Criteria andLoginTypeNotEqualTo(String value) {
-            addCriterion("login_type <>", value, "loginType");
+        public Criteria andLoginTimeNotEqualTo(Date value) {
+            addCriterion("login_time <>", value, "loginTime");
             return (Criteria) this;
         }
 
-        public Criteria andLoginTypeGreaterThan(String value) {
-            addCriterion("login_type >", value, "loginType");
+        public Criteria andLoginTimeGreaterThan(Date value) {
+            addCriterion("login_time >", value, "loginTime");
             return (Criteria) this;
         }
 
-        public Criteria andLoginTypeGreaterThanOrEqualTo(String value) {
-            addCriterion("login_type >=", value, "loginType");
+        public Criteria andLoginTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("login_time >=", value, "loginTime");
             return (Criteria) this;
         }
 
-        public Criteria andLoginTypeLessThan(String value) {
-            addCriterion("login_type <", value, "loginType");
+        public Criteria andLoginTimeLessThan(Date value) {
+            addCriterion("login_time <", value, "loginTime");
             return (Criteria) this;
         }
 
-        public Criteria andLoginTypeLessThanOrEqualTo(String value) {
-            addCriterion("login_type <=", value, "loginType");
+        public Criteria andLoginTimeLessThanOrEqualTo(Date value) {
+            addCriterion("login_time <=", value, "loginTime");
             return (Criteria) this;
         }
 
-        public Criteria andLoginTypeLike(String value) {
-            addCriterion("login_type like", value, "loginType");
+        public Criteria andLoginTimeIn(List<Date> values) {
+            addCriterion("login_time in", values, "loginTime");
             return (Criteria) this;
         }
 
-        public Criteria andLoginTypeNotLike(String value) {
-            addCriterion("login_type not like", value, "loginType");
+        public Criteria andLoginTimeNotIn(List<Date> values) {
+            addCriterion("login_time not in", values, "loginTime");
             return (Criteria) this;
         }
 
-        public Criteria andLoginTypeIn(List<String> values) {
-            addCriterion("login_type in", values, "loginType");
+        public Criteria andLoginTimeBetween(Date value1, Date value2) {
+            addCriterion("login_time between", value1, value2, "loginTime");
             return (Criteria) this;
         }
 
-        public Criteria andLoginTypeNotIn(List<String> values) {
-            addCriterion("login_type not in", values, "loginType");
+        public Criteria andLoginTimeNotBetween(Date value1, Date value2) {
+            addCriterion("login_time not between", value1, value2, "loginTime");
             return (Criteria) this;
         }
 
-        public Criteria andLoginTypeBetween(String value1, String value2) {
-            addCriterion("login_type between", value1, value2, "loginType");
+        public Criteria andLoginLockIsNull() {
+            addCriterion("login_lock is null");
             return (Criteria) this;
         }
 
-        public Criteria andLoginTypeNotBetween(String value1, String value2) {
-            addCriterion("login_type not between", value1, value2, "loginType");
+        public Criteria andLoginLockIsNotNull() {
+            addCriterion("login_lock is not null");
             return (Criteria) this;
         }
 
-        public Criteria andLoginClassifyIsNull() {
-            addCriterion("login_classify is null");
+        public Criteria andLoginLockEqualTo(String value) {
+            addCriterion("login_lock =", value, "loginLock");
             return (Criteria) this;
         }
 
-        public Criteria andLoginClassifyIsNotNull() {
-            addCriterion("login_classify is not null");
+        public Criteria andLoginLockNotEqualTo(String value) {
+            addCriterion("login_lock <>", value, "loginLock");
             return (Criteria) this;
         }
 
-        public Criteria andLoginClassifyEqualTo(String value) {
-            addCriterion("login_classify =", value, "loginClassify");
+        public Criteria andLoginLockGreaterThan(String value) {
+            addCriterion("login_lock >", value, "loginLock");
             return (Criteria) this;
         }
 
-        public Criteria andLoginClassifyNotEqualTo(String value) {
-            addCriterion("login_classify <>", value, "loginClassify");
+        public Criteria andLoginLockGreaterThanOrEqualTo(String value) {
+            addCriterion("login_lock >=", value, "loginLock");
             return (Criteria) this;
         }
 
-        public Criteria andLoginClassifyGreaterThan(String value) {
-            addCriterion("login_classify >", value, "loginClassify");
+        public Criteria andLoginLockLessThan(String value) {
+            addCriterion("login_lock <", value, "loginLock");
             return (Criteria) this;
         }
 
-        public Criteria andLoginClassifyGreaterThanOrEqualTo(String value) {
-            addCriterion("login_classify >=", value, "loginClassify");
+        public Criteria andLoginLockLessThanOrEqualTo(String value) {
+            addCriterion("login_lock <=", value, "loginLock");
             return (Criteria) this;
         }
 
-        public Criteria andLoginClassifyLessThan(String value) {
-            addCriterion("login_classify <", value, "loginClassify");
+        public Criteria andLoginLockLike(String value) {
+            addCriterion("login_lock like", value, "loginLock");
             return (Criteria) this;
         }
 
-        public Criteria andLoginClassifyLessThanOrEqualTo(String value) {
-            addCriterion("login_classify <=", value, "loginClassify");
+        public Criteria andLoginLockNotLike(String value) {
+            addCriterion("login_lock not like", value, "loginLock");
             return (Criteria) this;
         }
 
-        public Criteria andLoginClassifyLike(String value) {
-            addCriterion("login_classify like", value, "loginClassify");
+        public Criteria andLoginLockIn(List<String> values) {
+            addCriterion("login_lock in", values, "loginLock");
             return (Criteria) this;
         }
 
-        public Criteria andLoginClassifyNotLike(String value) {
-            addCriterion("login_classify not like", value, "loginClassify");
+        public Criteria andLoginLockNotIn(List<String> values) {
+            addCriterion("login_lock not in", values, "loginLock");
             return (Criteria) this;
         }
 
-        public Criteria andLoginClassifyIn(List<String> values) {
-            addCriterion("login_classify in", values, "loginClassify");
+        public Criteria andLoginLockBetween(String value1, String value2) {
+            addCriterion("login_lock between", value1, value2, "loginLock");
             return (Criteria) this;
         }
 
-        public Criteria andLoginClassifyNotIn(List<String> values) {
-            addCriterion("login_classify not in", values, "loginClassify");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginClassifyBetween(String value1, String value2) {
-            addCriterion("login_classify between", value1, value2, "loginClassify");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginClassifyNotBetween(String value1, String value2) {
-            addCriterion("login_classify not between", value1, value2, "loginClassify");
+        public Criteria andLoginLockNotBetween(String value1, String value2) {
+            addCriterion("login_lock not between", value1, value2, "loginLock");
             return (Criteria) this;
         }
 
@@ -1274,206 +1263,6 @@ public class TbSecurityAccountExample {
 
         public Criteria andLoginDetailNotBetween(String value1, String value2) {
             addCriterion("login_detail not between", value1, value2, "loginDetail");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginBackLockIsNull() {
-            addCriterion("login_back_lock is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginBackLockIsNotNull() {
-            addCriterion("login_back_lock is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginBackLockEqualTo(String value) {
-            addCriterion("login_back_lock =", value, "loginBackLock");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginBackLockNotEqualTo(String value) {
-            addCriterion("login_back_lock <>", value, "loginBackLock");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginBackLockGreaterThan(String value) {
-            addCriterion("login_back_lock >", value, "loginBackLock");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginBackLockGreaterThanOrEqualTo(String value) {
-            addCriterion("login_back_lock >=", value, "loginBackLock");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginBackLockLessThan(String value) {
-            addCriterion("login_back_lock <", value, "loginBackLock");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginBackLockLessThanOrEqualTo(String value) {
-            addCriterion("login_back_lock <=", value, "loginBackLock");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginBackLockLike(String value) {
-            addCriterion("login_back_lock like", value, "loginBackLock");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginBackLockNotLike(String value) {
-            addCriterion("login_back_lock not like", value, "loginBackLock");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginBackLockIn(List<String> values) {
-            addCriterion("login_back_lock in", values, "loginBackLock");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginBackLockNotIn(List<String> values) {
-            addCriterion("login_back_lock not in", values, "loginBackLock");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginBackLockBetween(String value1, String value2) {
-            addCriterion("login_back_lock between", value1, value2, "loginBackLock");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginBackLockNotBetween(String value1, String value2) {
-            addCriterion("login_back_lock not between", value1, value2, "loginBackLock");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginErrorLockIsNull() {
-            addCriterion("login_error_lock is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginErrorLockIsNotNull() {
-            addCriterion("login_error_lock is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginErrorLockEqualTo(String value) {
-            addCriterion("login_error_lock =", value, "loginErrorLock");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginErrorLockNotEqualTo(String value) {
-            addCriterion("login_error_lock <>", value, "loginErrorLock");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginErrorLockGreaterThan(String value) {
-            addCriterion("login_error_lock >", value, "loginErrorLock");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginErrorLockGreaterThanOrEqualTo(String value) {
-            addCriterion("login_error_lock >=", value, "loginErrorLock");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginErrorLockLessThan(String value) {
-            addCriterion("login_error_lock <", value, "loginErrorLock");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginErrorLockLessThanOrEqualTo(String value) {
-            addCriterion("login_error_lock <=", value, "loginErrorLock");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginErrorLockLike(String value) {
-            addCriterion("login_error_lock like", value, "loginErrorLock");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginErrorLockNotLike(String value) {
-            addCriterion("login_error_lock not like", value, "loginErrorLock");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginErrorLockIn(List<String> values) {
-            addCriterion("login_error_lock in", values, "loginErrorLock");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginErrorLockNotIn(List<String> values) {
-            addCriterion("login_error_lock not in", values, "loginErrorLock");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginErrorLockBetween(String value1, String value2) {
-            addCriterion("login_error_lock between", value1, value2, "loginErrorLock");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginErrorLockNotBetween(String value1, String value2) {
-            addCriterion("login_error_lock not between", value1, value2, "loginErrorLock");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginErrorCountIsNull() {
-            addCriterion("login_error_count is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginErrorCountIsNotNull() {
-            addCriterion("login_error_count is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginErrorCountEqualTo(Integer value) {
-            addCriterion("login_error_count =", value, "loginErrorCount");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginErrorCountNotEqualTo(Integer value) {
-            addCriterion("login_error_count <>", value, "loginErrorCount");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginErrorCountGreaterThan(Integer value) {
-            addCriterion("login_error_count >", value, "loginErrorCount");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginErrorCountGreaterThanOrEqualTo(Integer value) {
-            addCriterion("login_error_count >=", value, "loginErrorCount");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginErrorCountLessThan(Integer value) {
-            addCriterion("login_error_count <", value, "loginErrorCount");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginErrorCountLessThanOrEqualTo(Integer value) {
-            addCriterion("login_error_count <=", value, "loginErrorCount");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginErrorCountIn(List<Integer> values) {
-            addCriterion("login_error_count in", values, "loginErrorCount");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginErrorCountNotIn(List<Integer> values) {
-            addCriterion("login_error_count not in", values, "loginErrorCount");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginErrorCountBetween(Integer value1, Integer value2) {
-            addCriterion("login_error_count between", value1, value2, "loginErrorCount");
-            return (Criteria) this;
-        }
-
-        public Criteria andLoginErrorCountNotBetween(Integer value1, Integer value2) {
-            addCriterion("login_error_count not between", value1, value2, "loginErrorCount");
             return (Criteria) this;
         }
     }

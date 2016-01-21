@@ -1,8 +1,8 @@
-package com.front.dao.security;
+package com.back.dao.security;
 
+import com.back.entity.security.TbSecurityAccount;
+import com.back.entity.security.TbSecurityAccountExample;
 import com.base.dao.BaseDao;
-import com.entity.security.TbSecurityAccount;
-import com.entity.security.TbSecurityAccountExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

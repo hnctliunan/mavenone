@@ -17,7 +17,7 @@ public class TestSecurity {
     public void test1(){
         JSONObject jsonObject = null;
         try {
-            jsonObject = this.iTbSecurityAccountBiz.queryList();
+//            jsonObject = this.iTbSecurityAccountBiz.queryList();
         } catch (Exception e) {
             e.printStackTrace();
         }

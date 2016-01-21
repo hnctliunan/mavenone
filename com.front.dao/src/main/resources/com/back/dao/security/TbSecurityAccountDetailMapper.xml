@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.front.dao.security.TbSecurityAccountMapper" >
-  <resultMap id="BaseResultMap" type="com.entity.security.TbSecurityAccount" >
+<mapper namespace="com.back.dao.security.TbSecurityAccountDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.back.entity.security.TbSecurityAccountDetail" >
     <id column="data_id" property="dataId" jdbcType="CHAR" />
     <result column="data_enable" property="dataEnable" jdbcType="CHAR" />
     <result column="data_insert_time" property="dataInsertTime" jdbcType="TIMESTAMP" />
@@ -13,15 +13,14 @@
     <result column="extension_d" property="extensionD" jdbcType="VARCHAR" />
     <result column="extension_e" property="extensionE" jdbcType="VARCHAR" />
     <result column="extension_f" property="extensionF" jdbcType="VARCHAR" />
-    <result column="login_name" property="loginName" jdbcType="VARCHAR" />
-    <result column="login_pass" property="loginPass" jdbcType="CHAR" />
-    <result column="login_salt" property="loginSalt" jdbcType="CHAR" />
-    <result column="login_type" property="loginType" jdbcType="CHAR" />
-    <result column="login_classify" property="loginClassify" jdbcType="CHAR" />
-    <result column="login_detail" property="loginDetail" jdbcType="CHAR" />
-    <result column="login_back_lock" property="loginBackLock" jdbcType="CHAR" />
-    <result column="login_error_lock" property="loginErrorLock" jdbcType="CHAR" />
-    <result column="login_error_count" property="loginErrorCount" jdbcType="INTEGER" />
+    <result column="det_name" property="detName" jdbcType="VARCHAR" />
+    <result column="det_sex" property="detSex" jdbcType="CHAR" />
+    <result column="det_cid" property="detCid" jdbcType="VARCHAR" />
+    <result column="det_wrok_number" property="detWrokNumber" jdbcType="VARCHAR" />
+    <result column="det_mail" property="detMail" jdbcType="VARCHAR" />
+    <result column="det_qq" property="detQq" jdbcType="VARCHAR" />
+    <result column="det_address" property="detAddress" jdbcType="VARCHAR" />
+    <result column="det_birthday" property="detBirthday" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -83,18 +82,17 @@
   </sql>
   <sql id="Base_Column_List" >
     data_id, data_enable, data_insert_time, data_update_time, data_delete_time, extension_a, 
-    extension_b, extension_c, extension_d, extension_e, extension_f, login_name, login_pass, 
-    login_salt, login_type, login_classify, login_detail, login_back_lock, login_error_lock, 
-    login_error_count
+    extension_b, extension_c, extension_d, extension_e, extension_f, det_name, det_sex, 
+    det_cid, det_wrok_number, det_mail, det_qq, det_address, det_birthday
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.entity.security.TbSecurityAccountExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.back.entity.security.TbSecurityAccountDetailExample" >
     <include refid="MySQLDialectPrefix" />
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from tb_security_account
+    from tb_security_account_detail
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -106,37 +104,37 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
-    from tb_security_account
+    from tb_security_account_detail
     where data_id = #{dataId,jdbcType=CHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from tb_security_account
+    delete from tb_security_account_detail
     where data_id = #{dataId,jdbcType=CHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.entity.security.TbSecurityAccountExample" >
-    delete from tb_security_account
+  <delete id="deleteByExample" parameterType="com.back.entity.security.TbSecurityAccountDetailExample" >
+    delete from tb_security_account_detail
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.entity.security.TbSecurityAccount" >
-    insert into tb_security_account (data_id, data_enable, data_insert_time, 
+  <insert id="insert" parameterType="com.back.entity.security.TbSecurityAccountDetail" >
+    insert into tb_security_account_detail (data_id, data_enable, data_insert_time, 
       data_update_time, data_delete_time, extension_a, 
       extension_b, extension_c, extension_d, 
-      extension_e, extension_f, login_name, 
-      login_pass, login_salt, login_type, 
-      login_classify, login_detail, login_back_lock, 
-      login_error_lock, login_error_count)
+      extension_e, extension_f, det_name, 
+      det_sex, det_cid, det_wrok_number, 
+      det_mail, det_qq, det_address, 
+      det_birthday)
     values (#{dataId,jdbcType=CHAR}, #{dataEnable,jdbcType=CHAR}, #{dataInsertTime,jdbcType=TIMESTAMP}, 
       #{dataUpdateTime,jdbcType=TIMESTAMP}, #{dataDeleteTime,jdbcType=TIMESTAMP}, #{extensionA,jdbcType=VARCHAR}, 
       #{extensionB,jdbcType=VARCHAR}, #{extensionC,jdbcType=VARCHAR}, #{extensionD,jdbcType=VARCHAR}, 
-      #{extensionE,jdbcType=VARCHAR}, #{extensionF,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR}, 
-      #{loginPass,jdbcType=CHAR}, #{loginSalt,jdbcType=CHAR}, #{loginType,jdbcType=CHAR}, 
-      #{loginClassify,jdbcType=CHAR}, #{loginDetail,jdbcType=CHAR}, #{loginBackLock,jdbcType=CHAR}, 
-      #{loginErrorLock,jdbcType=CHAR}, #{loginErrorCount,jdbcType=INTEGER})
+      #{extensionE,jdbcType=VARCHAR}, #{extensionF,jdbcType=VARCHAR}, #{detName,jdbcType=VARCHAR}, 
+      #{detSex,jdbcType=CHAR}, #{detCid,jdbcType=VARCHAR}, #{detWrokNumber,jdbcType=VARCHAR}, 
+      #{detMail,jdbcType=VARCHAR}, #{detQq,jdbcType=VARCHAR}, #{detAddress,jdbcType=VARCHAR}, 
+      #{detBirthday,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.entity.security.TbSecurityAccount" >
-    insert into tb_security_account
+  <insert id="insertSelective" parameterType="com.back.entity.security.TbSecurityAccountDetail" >
+    insert into tb_security_account_detail
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="dataId != null" >
         data_id,
@@ -171,32 +169,29 @@
       <if test="extensionF != null" >
         extension_f,
       </if>
-      <if test="loginName != null" >
-        login_name,
+      <if test="detName != null" >
+        det_name,
       </if>
-      <if test="loginPass != null" >
-        login_pass,
+      <if test="detSex != null" >
+        det_sex,
       </if>
-      <if test="loginSalt != null" >
-        login_salt,
+      <if test="detCid != null" >
+        det_cid,
       </if>
-      <if test="loginType != null" >
-        login_type,
+      <if test="detWrokNumber != null" >
+        det_wrok_number,
       </if>
-      <if test="loginClassify != null" >
-        login_classify,
+      <if test="detMail != null" >
+        det_mail,
       </if>
-      <if test="loginDetail != null" >
-        login_detail,
+      <if test="detQq != null" >
+        det_qq,
       </if>
-      <if test="loginBackLock != null" >
-        login_back_lock,
+      <if test="detAddress != null" >
+        det_address,
       </if>
-      <if test="loginErrorLock != null" >
-        login_error_lock,
-      </if>
-      <if test="loginErrorCount != null" >
-        login_error_count,
+      <if test="detBirthday != null" >
+        det_birthday,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -233,43 +228,40 @@
       <if test="extensionF != null" >
         #{extensionF,jdbcType=VARCHAR},
       </if>
-      <if test="loginName != null" >
-        #{loginName,jdbcType=VARCHAR},
+      <if test="detName != null" >
+        #{detName,jdbcType=VARCHAR},
       </if>
-      <if test="loginPass != null" >
-        #{loginPass,jdbcType=CHAR},
+      <if test="detSex != null" >
+        #{detSex,jdbcType=CHAR},
       </if>
-      <if test="loginSalt != null" >
-        #{loginSalt,jdbcType=CHAR},
+      <if test="detCid != null" >
+        #{detCid,jdbcType=VARCHAR},
       </if>
-      <if test="loginType != null" >
-        #{loginType,jdbcType=CHAR},
+      <if test="detWrokNumber != null" >
+        #{detWrokNumber,jdbcType=VARCHAR},
       </if>
-      <if test="loginClassify != null" >
-        #{loginClassify,jdbcType=CHAR},
+      <if test="detMail != null" >
+        #{detMail,jdbcType=VARCHAR},
       </if>
-      <if test="loginDetail != null" >
-        #{loginDetail,jdbcType=CHAR},
+      <if test="detQq != null" >
+        #{detQq,jdbcType=VARCHAR},
       </if>
-      <if test="loginBackLock != null" >
-        #{loginBackLock,jdbcType=CHAR},
+      <if test="detAddress != null" >
+        #{detAddress,jdbcType=VARCHAR},
       </if>
-      <if test="loginErrorLock != null" >
-        #{loginErrorLock,jdbcType=CHAR},
-      </if>
-      <if test="loginErrorCount != null" >
-        #{loginErrorCount,jdbcType=INTEGER},
+      <if test="detBirthday != null" >
+        #{detBirthday,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.entity.security.TbSecurityAccountExample" resultType="java.lang.Integer" >
-    select count(*) from tb_security_account
+  <select id="countByExample" parameterType="com.back.entity.security.TbSecurityAccountDetailExample" resultType="java.lang.Integer" >
+    select count(*) from tb_security_account_detail
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update tb_security_account
+    update tb_security_account_detail
     <set >
       <if test="record.dataId != null" >
         data_id = #{record.dataId,jdbcType=CHAR},
@@ -304,32 +296,29 @@
       <if test="record.extensionF != null" >
         extension_f = #{record.extensionF,jdbcType=VARCHAR},
       </if>
-      <if test="record.loginName != null" >
-        login_name = #{record.loginName,jdbcType=VARCHAR},
+      <if test="record.detName != null" >
+        det_name = #{record.detName,jdbcType=VARCHAR},
       </if>
-      <if test="record.loginPass != null" >
-        login_pass = #{record.loginPass,jdbcType=CHAR},
+      <if test="record.detSex != null" >
+        det_sex = #{record.detSex,jdbcType=CHAR},
       </if>
-      <if test="record.loginSalt != null" >
-        login_salt = #{record.loginSalt,jdbcType=CHAR},
+      <if test="record.detCid != null" >
+        det_cid = #{record.detCid,jdbcType=VARCHAR},
       </if>
-      <if test="record.loginType != null" >
-        login_type = #{record.loginType,jdbcType=CHAR},
+      <if test="record.detWrokNumber != null" >
+        det_wrok_number = #{record.detWrokNumber,jdbcType=VARCHAR},
       </if>
-      <if test="record.loginClassify != null" >
-        login_classify = #{record.loginClassify,jdbcType=CHAR},
+      <if test="record.detMail != null" >
+        det_mail = #{record.detMail,jdbcType=VARCHAR},
       </if>
-      <if test="record.loginDetail != null" >
-        login_detail = #{record.loginDetail,jdbcType=CHAR},
+      <if test="record.detQq != null" >
+        det_qq = #{record.detQq,jdbcType=VARCHAR},
       </if>
-      <if test="record.loginBackLock != null" >
-        login_back_lock = #{record.loginBackLock,jdbcType=CHAR},
+      <if test="record.detAddress != null" >
+        det_address = #{record.detAddress,jdbcType=VARCHAR},
       </if>
-      <if test="record.loginErrorLock != null" >
-        login_error_lock = #{record.loginErrorLock,jdbcType=CHAR},
-      </if>
-      <if test="record.loginErrorCount != null" >
-        login_error_count = #{record.loginErrorCount,jdbcType=INTEGER},
+      <if test="record.detBirthday != null" >
+        det_birthday = #{record.detBirthday,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -337,7 +326,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update tb_security_account
+    update tb_security_account_detail
     set data_id = #{record.dataId,jdbcType=CHAR},
       data_enable = #{record.dataEnable,jdbcType=CHAR},
       data_insert_time = #{record.dataInsertTime,jdbcType=TIMESTAMP},
@@ -349,21 +338,20 @@
       extension_d = #{record.extensionD,jdbcType=VARCHAR},
       extension_e = #{record.extensionE,jdbcType=VARCHAR},
       extension_f = #{record.extensionF,jdbcType=VARCHAR},
-      login_name = #{record.loginName,jdbcType=VARCHAR},
-      login_pass = #{record.loginPass,jdbcType=CHAR},
-      login_salt = #{record.loginSalt,jdbcType=CHAR},
-      login_type = #{record.loginType,jdbcType=CHAR},
-      login_classify = #{record.loginClassify,jdbcType=CHAR},
-      login_detail = #{record.loginDetail,jdbcType=CHAR},
-      login_back_lock = #{record.loginBackLock,jdbcType=CHAR},
-      login_error_lock = #{record.loginErrorLock,jdbcType=CHAR},
-      login_error_count = #{record.loginErrorCount,jdbcType=INTEGER}
+      det_name = #{record.detName,jdbcType=VARCHAR},
+      det_sex = #{record.detSex,jdbcType=CHAR},
+      det_cid = #{record.detCid,jdbcType=VARCHAR},
+      det_wrok_number = #{record.detWrokNumber,jdbcType=VARCHAR},
+      det_mail = #{record.detMail,jdbcType=VARCHAR},
+      det_qq = #{record.detQq,jdbcType=VARCHAR},
+      det_address = #{record.detAddress,jdbcType=VARCHAR},
+      det_birthday = #{record.detBirthday,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.entity.security.TbSecurityAccount" >
-    update tb_security_account
+  <update id="updateByPrimaryKeySelective" parameterType="com.back.entity.security.TbSecurityAccountDetail" >
+    update tb_security_account_detail
     <set >
       <if test="dataEnable != null" >
         data_enable = #{dataEnable,jdbcType=CHAR},
@@ -395,38 +383,35 @@
       <if test="extensionF != null" >
         extension_f = #{extensionF,jdbcType=VARCHAR},
       </if>
-      <if test="loginName != null" >
-        login_name = #{loginName,jdbcType=VARCHAR},
+      <if test="detName != null" >
+        det_name = #{detName,jdbcType=VARCHAR},
       </if>
-      <if test="loginPass != null" >
-        login_pass = #{loginPass,jdbcType=CHAR},
+      <if test="detSex != null" >
+        det_sex = #{detSex,jdbcType=CHAR},
       </if>
-      <if test="loginSalt != null" >
-        login_salt = #{loginSalt,jdbcType=CHAR},
+      <if test="detCid != null" >
+        det_cid = #{detCid,jdbcType=VARCHAR},
       </if>
-      <if test="loginType != null" >
-        login_type = #{loginType,jdbcType=CHAR},
+      <if test="detWrokNumber != null" >
+        det_wrok_number = #{detWrokNumber,jdbcType=VARCHAR},
       </if>
-      <if test="loginClassify != null" >
-        login_classify = #{loginClassify,jdbcType=CHAR},
+      <if test="detMail != null" >
+        det_mail = #{detMail,jdbcType=VARCHAR},
       </if>
-      <if test="loginDetail != null" >
-        login_detail = #{loginDetail,jdbcType=CHAR},
+      <if test="detQq != null" >
+        det_qq = #{detQq,jdbcType=VARCHAR},
       </if>
-      <if test="loginBackLock != null" >
-        login_back_lock = #{loginBackLock,jdbcType=CHAR},
+      <if test="detAddress != null" >
+        det_address = #{detAddress,jdbcType=VARCHAR},
       </if>
-      <if test="loginErrorLock != null" >
-        login_error_lock = #{loginErrorLock,jdbcType=CHAR},
-      </if>
-      <if test="loginErrorCount != null" >
-        login_error_count = #{loginErrorCount,jdbcType=INTEGER},
+      <if test="detBirthday != null" >
+        det_birthday = #{detBirthday,jdbcType=TIMESTAMP},
       </if>
     </set>
     where data_id = #{dataId,jdbcType=CHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.entity.security.TbSecurityAccount" >
-    update tb_security_account
+  <update id="updateByPrimaryKey" parameterType="com.back.entity.security.TbSecurityAccountDetail" >
+    update tb_security_account_detail
     set data_enable = #{dataEnable,jdbcType=CHAR},
       data_insert_time = #{dataInsertTime,jdbcType=TIMESTAMP},
       data_update_time = #{dataUpdateTime,jdbcType=TIMESTAMP},
@@ -437,30 +422,29 @@
       extension_d = #{extensionD,jdbcType=VARCHAR},
       extension_e = #{extensionE,jdbcType=VARCHAR},
       extension_f = #{extensionF,jdbcType=VARCHAR},
-      login_name = #{loginName,jdbcType=VARCHAR},
-      login_pass = #{loginPass,jdbcType=CHAR},
-      login_salt = #{loginSalt,jdbcType=CHAR},
-      login_type = #{loginType,jdbcType=CHAR},
-      login_classify = #{loginClassify,jdbcType=CHAR},
-      login_detail = #{loginDetail,jdbcType=CHAR},
-      login_back_lock = #{loginBackLock,jdbcType=CHAR},
-      login_error_lock = #{loginErrorLock,jdbcType=CHAR},
-      login_error_count = #{loginErrorCount,jdbcType=INTEGER}
+      det_name = #{detName,jdbcType=VARCHAR},
+      det_sex = #{detSex,jdbcType=CHAR},
+      det_cid = #{detCid,jdbcType=VARCHAR},
+      det_wrok_number = #{detWrokNumber,jdbcType=VARCHAR},
+      det_mail = #{detMail,jdbcType=VARCHAR},
+      det_qq = #{detQq,jdbcType=VARCHAR},
+      det_address = #{detAddress,jdbcType=VARCHAR},
+      det_birthday = #{detBirthday,jdbcType=TIMESTAMP}
     where data_id = #{dataId,jdbcType=CHAR}
   </update>
   <insert id="batchInsert" parameterType="java.util.List" >
     <foreach collection="records" item="record" index="index" separator=";" >
-      insert into tb_security_account (data_id,data_enable,data_insert_time,data_update_time,data_delete_time,extension_a,extension_b,extension_c,extension_d,extension_e,extension_f,login_name,login_pass,login_salt,login_type,login_classify,login_detail,login_back_lock,login_error_lock,login_error_count) values (#{record.dataId,jdbcType=CHAR},#{record.dataEnable,jdbcType=CHAR},#{record.dataInsertTime,jdbcType=TIMESTAMP},#{record.dataUpdateTime,jdbcType=TIMESTAMP},#{record.dataDeleteTime,jdbcType=TIMESTAMP},#{record.extensionA,jdbcType=VARCHAR},#{record.extensionB,jdbcType=VARCHAR},#{record.extensionC,jdbcType=VARCHAR},#{record.extensionD,jdbcType=VARCHAR},#{record.extensionE,jdbcType=VARCHAR},#{record.extensionF,jdbcType=VARCHAR},#{record.loginName,jdbcType=VARCHAR},#{record.loginPass,jdbcType=CHAR},#{record.loginSalt,jdbcType=CHAR},#{record.loginType,jdbcType=CHAR},#{record.loginClassify,jdbcType=CHAR},#{record.loginDetail,jdbcType=CHAR},#{record.loginBackLock,jdbcType=CHAR},#{record.loginErrorLock,jdbcType=CHAR},#{record.loginErrorCount,jdbcType=INTEGER})
+      insert into tb_security_account_detail (data_id,data_enable,data_insert_time,data_update_time,data_delete_time,extension_a,extension_b,extension_c,extension_d,extension_e,extension_f,det_name,det_sex,det_cid,det_wrok_number,det_mail,det_qq,det_address,det_birthday) values (#{record.dataId,jdbcType=CHAR},#{record.dataEnable,jdbcType=CHAR},#{record.dataInsertTime,jdbcType=TIMESTAMP},#{record.dataUpdateTime,jdbcType=TIMESTAMP},#{record.dataDeleteTime,jdbcType=TIMESTAMP},#{record.extensionA,jdbcType=VARCHAR},#{record.extensionB,jdbcType=VARCHAR},#{record.extensionC,jdbcType=VARCHAR},#{record.extensionD,jdbcType=VARCHAR},#{record.extensionE,jdbcType=VARCHAR},#{record.extensionF,jdbcType=VARCHAR},#{record.detName,jdbcType=VARCHAR},#{record.detSex,jdbcType=CHAR},#{record.detCid,jdbcType=VARCHAR},#{record.detWrokNumber,jdbcType=VARCHAR},#{record.detMail,jdbcType=VARCHAR},#{record.detQq,jdbcType=VARCHAR},#{record.detAddress,jdbcType=VARCHAR},#{record.detBirthday,jdbcType=TIMESTAMP})
     </foreach>
   </insert>
   <update id="batchUpdateByPrimaryKey" parameterType="java.util.List" >
     <foreach collection="records" item="record" index="index" separator=";" >
-      update tb_security_account set data_id=#{record.dataId,jdbcType=CHAR},data_enable=#{record.dataEnable,jdbcType=CHAR},data_insert_time=#{record.dataInsertTime,jdbcType=TIMESTAMP},data_update_time=#{record.dataUpdateTime,jdbcType=TIMESTAMP},data_delete_time=#{record.dataDeleteTime,jdbcType=TIMESTAMP},extension_a=#{record.extensionA,jdbcType=VARCHAR},extension_b=#{record.extensionB,jdbcType=VARCHAR},extension_c=#{record.extensionC,jdbcType=VARCHAR},extension_d=#{record.extensionD,jdbcType=VARCHAR},extension_e=#{record.extensionE,jdbcType=VARCHAR},extension_f=#{record.extensionF,jdbcType=VARCHAR},login_name=#{record.loginName,jdbcType=VARCHAR},login_pass=#{record.loginPass,jdbcType=CHAR},login_salt=#{record.loginSalt,jdbcType=CHAR},login_type=#{record.loginType,jdbcType=CHAR},login_classify=#{record.loginClassify,jdbcType=CHAR},login_detail=#{record.loginDetail,jdbcType=CHAR},login_back_lock=#{record.loginBackLock,jdbcType=CHAR},login_error_lock=#{record.loginErrorLock,jdbcType=CHAR},login_error_count=#{record.loginErrorCount,jdbcType=INTEGER} where data_id=#{record.dataId,jdbcType=CHAR}
+      update tb_security_account_detail set data_id=#{record.dataId,jdbcType=CHAR},data_enable=#{record.dataEnable,jdbcType=CHAR},data_insert_time=#{record.dataInsertTime,jdbcType=TIMESTAMP},data_update_time=#{record.dataUpdateTime,jdbcType=TIMESTAMP},data_delete_time=#{record.dataDeleteTime,jdbcType=TIMESTAMP},extension_a=#{record.extensionA,jdbcType=VARCHAR},extension_b=#{record.extensionB,jdbcType=VARCHAR},extension_c=#{record.extensionC,jdbcType=VARCHAR},extension_d=#{record.extensionD,jdbcType=VARCHAR},extension_e=#{record.extensionE,jdbcType=VARCHAR},extension_f=#{record.extensionF,jdbcType=VARCHAR},det_name=#{record.detName,jdbcType=VARCHAR},det_sex=#{record.detSex,jdbcType=CHAR},det_cid=#{record.detCid,jdbcType=VARCHAR},det_wrok_number=#{record.detWrokNumber,jdbcType=VARCHAR},det_mail=#{record.detMail,jdbcType=VARCHAR},det_qq=#{record.detQq,jdbcType=VARCHAR},det_address=#{record.detAddress,jdbcType=VARCHAR},det_birthday=#{record.detBirthday,jdbcType=TIMESTAMP} where data_id=#{record.dataId,jdbcType=CHAR}
     </foreach>
   </update>
   <delete id="batchDeleteByPrimaryKey" parameterType="java.util.List" >
     <foreach collection="records" item="record" index="index" separator=";" >
-      delete from tb_security_account  where data_id=#{record}
+      delete from tb_security_account_detail  where data_id=#{record}
     </foreach>
   </delete>
   <sql id="MySQLDialectPrefix" >
