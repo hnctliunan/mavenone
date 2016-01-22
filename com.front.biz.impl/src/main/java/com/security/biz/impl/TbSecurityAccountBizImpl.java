@@ -3,6 +3,7 @@ package com.security.biz.impl;
 import com.alibaba.fastjson.JSONObject;
 import com.back.dao.security.TbSecurityAccountDetailMapper;
 import com.back.dao.security.TbSecurityAccountMapper;
+import com.entity.security.TbSecurityCustomerExample;
 import com.front.dao.validata.code.TbValidateCodeMapper;
 import com.back.entity.security.TbSecurityAccount;
 import com.back.entity.security.TbSecurityAccountDetail;
@@ -20,17 +21,18 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class TbSecurityAccountBizImpl extends BaseBizImpl implements ITbSecurityAccountBiz {
 
-    @Autowired
+//    @Autowired
     private TbSecurityAccountMapper objSecurityAccountMapper;
 
     @Autowired
     private TbSecurityCustomerMapper objSecurityCustomerMapper;
 
-    @Autowired
+//    @Autowired
     private TbSecurityAccountDetailMapper objSecurityAccountDetailMapper;
 
     @Autowired
@@ -68,5 +70,20 @@ public class TbSecurityAccountBizImpl extends BaseBizImpl implements ITbSecurity
         objAccountDetail.setDataInsertTime(new Date());
         this.objSecurityAccountDetailMapper.insert(objAccountDetail);
         return JsonResult.result(false,"数据入库失败",null);
+    }
+
+    @Override
+    public void queryMaster() throws Exception {
+        TbSecurityCustomerExample example = new TbSecurityCustomerExample();
+        List<TbSecurityCustomer> tbSecurityCustomers = this.objSecurityCustomerMapper.selectByExample(example);
+        this.logger.info("*****************************主库=" + tbSecurityCustomers.size());
+
+    }
+
+    @Override
+    public void querySlave() throws Exception {
+        TbSecurityCustomerExample example = new TbSecurityCustomerExample();
+        List<TbSecurityCustomer> tbSecurityCustomers = this.objSecurityCustomerMapper.selectByExample(example);
+        this.logger.info("********=============***************从库="+tbSecurityCustomers.size());
     }
 }

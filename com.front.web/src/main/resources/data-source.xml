@@ -24,42 +24,73 @@
     <context:component-scan base-package="com.*.biz.*">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
+    <!-- front 双数据源 -->
     <bean id="frontMasterDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
           <property name="driverClassName" value="${mysql.front.driver}" />
-          <property name="url" value="${mysql.front.url}" />
+          <property name="url" value="${mysql.front.master.url}" />
           <property name="username" value="${mysql.front.username}" />
           <property name="password" value="${mysql.front.password}" />
     </bean>
-    <bean id="backMasterDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="${mysql.back.driver}" />
-        <property name="url" value="${mysql.back.url}" />
-        <property name="username" value="${mysql.back.username}" />
-        <property name="password" value="${mysql.back.password}" />
+    <bean id="frontSlaveDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${mysql.front.driver}" />
+        <property name="url" value="${mysql.front.slave.url}" />
+        <property name="username" value="${mysql.front.username}" />
+        <property name="password" value="${mysql.front.slave.password}" />
+    </bean>
+    <!--<bean id="backMasterDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+        <!--<property name="driverClassName" value="${mysql.back.driver}" />-->
+        <!--<property name="url" value="${mysql.back.url}" />-->
+        <!--<property name="username" value="${mysql.back.username}" />-->
+        <!--<property name="password" value="${mysql.back.password}" />-->
+    <!--</bean>-->
+    <!-- 双数据源配置 -->
+    <bean id="frontDynamicDataSourceHolder" class="com.base.datasource.DynamicDataSourceHolder">
+        <property name="masterDataSources">
+            <map key-type="java.lang.String">
+                <entry key="masterDataSource" value-ref="frontMasterDataSource" />
+            </map>
+        </property>
+        <property name="slaveDataSources">
+            <map key-type="java.lang.String">
+                <entry key="slaveDataSource" value-ref="frontSlaveDataSource" />
+            </map>
+        </property>
+        <property name="defaultTargetDataSource" ref="frontMasterDataSource" />
     </bean>
     <!-- Spring的applicationContext配置文件中定义一个SqlSessionFactoryBean -->
     <bean id="frontSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="frontMasterDataSource" />
+        <property name="dataSource" ref="frontDynamicDataSourceHolder" />
         <property name="configLocation" value="classpath:mybatis.xml" />
     </bean>
-    <bean id="backSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="backMasterDataSource" />
-        <property name="configLocation" value="classpath:mybatis.xml" />
+    <!--<bean id="backSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">-->
+        <!--<property name="dataSource" ref="backMasterDataSource" />-->
+        <!--<property name="configLocation" value="classpath:mybatis.xml" />-->
+    <!--</bean>-->
+
+    <bean id="frontDataSourceAspect" class="com.base.datasource.DataSourceAspect">
+        <property name="dynamicDataSourceHolder" ref="frontDynamicDataSourceHolder" />
     </bean>
+    <aop:config>
+        <aop:aspect id="aspectFront" ref="frontDataSourceAspect">
+            <aop:pointcut id="txFront" expression="execution(* com.*.biz.*.*(..))" />
+            <aop:before pointcut-ref="txFront" method="before"/>
+        </aop:aspect>
+    </aop:config>
     <!-- 使用MapperScannerConfigurer来帮我们自动扫描和注册Mapper接口 -->
     <bean id="frontMapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="frontSqlSessionFactory" />
         <property name="basePackage" value="com.front.dao.*" />
     </bean>
-    <bean id="backMapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="sqlSessionFactoryBeanName" value="backSqlSessionFactory" />
-        <property name="basePackage" value="com.back.dao.*" />
-    </bean>
+    <!--<bean id="backMapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
+        <!--<property name="sqlSessionFactoryBeanName" value="backSqlSessionFactory" />-->
+        <!--<property name="basePackage" value="com.back.dao.*" />-->
+    <!--</bean>-->
     <bean name="frontTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="frontMasterDataSource"></property>
     </bean>
-    <bean name="backTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="backMasterDataSource"></property>
-    </bean>
+    <!--<bean name="backTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
+        <!--<property name="dataSource" ref="backMasterDataSource"></property>-->
+    <!--</bean>-->
 
     <!-- 基于xml 配置事务 -->
     <!--<tx:advice id="userTxAdvice" transaction-manager="frontTransactionManager">-->
@@ -79,6 +110,6 @@
 
     <!--<context:annotation-config />-->
     <!-- 启动spring事务注解，事务注解尽在此 -->
-    <tx:annotation-driven transaction-manager="backTransactionManager"/>
+    <!--<tx:annotation-driven transaction-manager="backTransactionManager"/>-->
     <tx:annotation-driven transaction-manager="frontTransactionManager"/>
 </beans>

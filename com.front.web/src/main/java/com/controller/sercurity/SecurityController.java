@@ -34,7 +34,9 @@ public class SecurityController extends BaseController{
     public String insert(HttpServletRequest request) {
         try {
 //            this.objSecurityAccountBiz.insertAccount();
-            this.objSecurityAccountBiz.visterAccount();
+//            this.objSecurityAccountBiz.visterAccount();
+            this.objSecurityAccountBiz.queryMaster();
+            this.objSecurityAccountBiz.querySlave();
         } catch (Exception e) {
             e.printStackTrace();
         }

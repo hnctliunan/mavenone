@@ -11,6 +11,12 @@
 
     <groupId>ln</groupId>
     <artifactId>com.front.biz</artifactId>
-
+    <dependencies>
+        <dependency>
+            <groupId>ln</groupId>
+            <artifactId>com.one.utils</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>
