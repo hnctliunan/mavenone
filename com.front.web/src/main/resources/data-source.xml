@@ -62,23 +62,23 @@
     </bean>
 
     <!-- 基于xml 配置事务 -->
-    <tx:advice id="userTxAdvice" transaction-manager="backTransactionManager">
-        <tx:attributes>
-            <tx:method name="delete*" propagation="REQUIRED" read-only="false" rollback-for="java.lang.Exception" no-rollback-for="java.lang.RuntimeException"/>
-            <tx:method name="insert*" propagation="REQUIRED" read-only="false" rollback-for="java.lang.RuntimeException" />
-            <tx:method name="update*" propagation="REQUIRED" read-only="false" rollback-for="java.lang.Exception" />
-            <tx:method name="find*" propagation="SUPPORTS"/>
-            <tx:method name="get*" propagation="SUPPORTS"/>
-            <tx:method name="select*" propagation="SUPPORTS"/>
-        </tx:attributes>
-    </tx:advice>
-    <aop:config>
-        <aop:pointcut id="pc" expression="execution(public * com.*.biz.impl.*.*(..))"/>
-        <aop:advisor advice-ref="userTxAdvice" pointcut-ref="pc"/>
-    </aop:config>
+    <!--<tx:advice id="userTxAdvice" transaction-manager="frontTransactionManager">-->
+        <!--<tx:attributes>-->
+            <!--<tx:method name="delete*" propagation="REQUIRED" read-only="false" rollback-for="java.lang.Exception" no-rollback-for="java.lang.RuntimeException"/>-->
+            <!--<tx:method name="insert*" propagation="REQUIRED" read-only="false" rollback-for="java.lang.RuntimeException" />-->
+            <!--<tx:method name="update*" propagation="REQUIRED" read-only="false" rollback-for="java.lang.Exception" />-->
+            <!--<tx:method name="find*" propagation="SUPPORTS"/>-->
+            <!--<tx:method name="get*" propagation="SUPPORTS"/>-->
+            <!--<tx:method name="select*" propagation="SUPPORTS"/>-->
+        <!--</tx:attributes>-->
+    <!--</tx:advice>-->
+    <!--<aop:config>-->
+        <!--<aop:pointcut id="pc" expression="execution(public * com.*.biz.impl.*.*(..))"/>-->
+        <!--<aop:advisor advice-ref="userTxAdvice" pointcut-ref="pc"/>-->
+    <!--</aop:config>-->
 
     <!--<context:annotation-config />-->
     <!-- 启动spring事务注解，事务注解尽在此 -->
-    <!--<tx:annotation-driven transaction-manager="backTransactionManager"/>-->
+    <tx:annotation-driven transaction-manager="backTransactionManager"/>
     <tx:annotation-driven transaction-manager="frontTransactionManager"/>
 </beans>

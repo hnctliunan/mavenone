@@ -9,23 +9,23 @@
 		<commentGenerator>
 			<property name="suppressAllComments" value="true" />
 		</commentGenerator>
-		<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.1.214:3306/fjsback" userId="p2p" password="fjs201503">
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.1.214:3306/fjsfront" userId="p2p" password="fjs201503">
 		</jdbcConnection>
 		<javaTypeResolver>
 			<property name="forceBigDecimals" value="false" />
 		</javaTypeResolver>
-		<javaModelGenerator targetPackage="com.back.entity.security" targetProject="F:\gjs\mavenone\com.front.entity\src\main\java">
+		<javaModelGenerator targetPackage="com.front.entity.validata.code" targetProject="F:\gjs\mavenone\com.front.entity\src\main\java">
 			<property name="enableSubPackages" value="true" />
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
-		<sqlMapGenerator targetPackage="com.back.dao.security" targetProject="F:\gjs\mavenone\com.front.dao\src\main\resources">
+		<sqlMapGenerator targetPackage="com.front.dao.validata.code" targetProject="F:\gjs\mavenone\com.front.dao\src\main\resources">
 			<property name="enableSubPackages" value="true" />
 		</sqlMapGenerator>
-		<javaClientGenerator type="XMLMAPPER" targetPackage="com.back.dao.security" targetProject="F:\gjs\mavenone\com.front.dao\src\main\java">
+		<javaClientGenerator type="XMLMAPPER" targetPackage="com.front.dao.validata.code" targetProject="F:\gjs\mavenone\com.front.dao\src\main\java">
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 
-		<table tableName="tb_security_account_detail" />
+		<table tableName="tb_validate_code" />
 		
 	</context>
 </generatorConfiguration> 

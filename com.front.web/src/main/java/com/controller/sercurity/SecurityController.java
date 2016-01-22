@@ -33,8 +33,8 @@ public class SecurityController extends BaseController{
     @RequestMapping(value = "/insert",method = RequestMethod.GET)
     public String insert(HttpServletRequest request) {
         try {
-            this.objSecurityAccountBiz.insertAccount();
-//            this.objSecurityAccountBiz.visterAccount();
+//            this.objSecurityAccountBiz.insertAccount();
+            this.objSecurityAccountBiz.visterAccount();
         } catch (Exception e) {
             e.printStackTrace();
         }
