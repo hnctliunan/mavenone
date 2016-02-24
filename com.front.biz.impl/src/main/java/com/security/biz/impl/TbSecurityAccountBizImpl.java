@@ -16,6 +16,8 @@ import com.front.dao.security.TbSecurityCustomerMapper;
 import com.front.entity.validata.code.TbValidateCode;
 import com.security.biz.ITbSecurityAccountBiz;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,13 +28,13 @@ import java.util.List;
 @Service
 public class TbSecurityAccountBizImpl extends BaseBizImpl implements ITbSecurityAccountBiz {
 
-//    @Autowired
+    //    @Autowired
     private TbSecurityAccountMapper objSecurityAccountMapper;
 
     @Autowired
     private TbSecurityCustomerMapper objSecurityCustomerMapper;
 
-//    @Autowired
+    //    @Autowired
     private TbSecurityAccountDetailMapper objSecurityAccountDetailMapper;
 
     @Autowired
@@ -57,7 +59,7 @@ public class TbSecurityAccountBizImpl extends BaseBizImpl implements ITbSecurity
     @Transactional(value = "backTransactionManager",propagation = Propagation.REQUIRED)
     @Override
     public JSONObject visterAccount() throws Exception {
-       TbSecurityAccount objSecurityAccount = new TbSecurityAccount();
+        TbSecurityAccount objSecurityAccount = new TbSecurityAccount();
         objSecurityAccount.setDataId(Guid.get());
         objSecurityAccount.setLoginName("137000000000");
         objSecurityAccount.setLoginPass("123456");
@@ -85,5 +87,19 @@ public class TbSecurityAccountBizImpl extends BaseBizImpl implements ITbSecurity
         TbSecurityCustomerExample example = new TbSecurityCustomerExample();
         List<TbSecurityCustomer> tbSecurityCustomers = this.objSecurityCustomerMapper.selectByExample(example);
         this.logger.info("********=============***************从库="+tbSecurityCustomers.size());
+    }
+
+    @Override
+//    @Cacheable(value = "dictCatlogCache")
+    @CacheEvict(value = "dictCatlogCache")
+    public TbSecurityCustomer testCache() throws Exception {
+        long lBegin = System.nanoTime();
+        this.logger.info("********lBegin="+lBegin);
+        TbSecurityCustomer tbSecurityCustomer = this.objSecurityCustomerMapper.selectByPrimaryKey("7bdd15a8efe64ef48bf86e85164f76ec");
+        this.logger.info("********mobile="+tbSecurityCustomer.getUserMobile());
+        long lEnd = System.nanoTime();
+        this.logger.info("********lEnd="+lEnd);
+        this.logger.info("********time="+(lEnd-lBegin));
+        return tbSecurityCustomer;
     }
 }

@@ -5,6 +5,7 @@ import com.entity.security.TbSecurityCustomer;
 import com.entity.security.TbSecurityCustomerExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.cache.annotation.Cacheable;
 
 public interface TbSecurityCustomerMapper extends BaseDao {
     int countByExample(TbSecurityCustomerExample example);

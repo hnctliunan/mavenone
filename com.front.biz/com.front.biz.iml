@@ -36,5 +36,6 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-test:3.2.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-core:3.2.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.1.43" level="project" />
+    <orderEntry type="module" module-name="com.front.entity" />
   </component>
 </module>

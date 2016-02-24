@@ -2,6 +2,8 @@ package com.controller.sercurity;
 
 import com.alibaba.fastjson.JSONObject;
 import com.base.controller.BaseController;
+import com.entity.security.TbSecurityCustomer;
+import com.front.entity.validata.code.TbValidateCode;
 import com.security.biz.ITbSecurityAccountBiz;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,6 +39,17 @@ public class SecurityController extends BaseController{
 //            this.objSecurityAccountBiz.visterAccount();
             this.objSecurityAccountBiz.queryMaster();
             this.objSecurityAccountBiz.querySlave();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "account/test";
+    }
+
+    @RequestMapping(value = "/testCache",method = RequestMethod.GET)
+    public String testCache(HttpServletRequest request) {
+        try {
+            TbSecurityCustomer tbSecurityCustomer = this.objSecurityAccountBiz.testCache();
+            System.out.println("++++++++++++++++++++++++"+tbSecurityCustomer);
         } catch (Exception e) {
             e.printStackTrace();
         }

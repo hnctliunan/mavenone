@@ -6,6 +6,5 @@
 </head>
 <body>
 this is test.jsp
-${root}
 </body>
 </html>
